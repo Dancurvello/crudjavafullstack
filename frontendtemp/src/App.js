@@ -7,24 +7,24 @@ function App() {
   const saveNameToDatabase = async () => {
     try {
       const response = await fetch("http://localhost:8080/api/salvarPessoa", {
-        mode: "no-cors",
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({ name }),
+        body: JSON.stringify({ nome: name }), // Corrija a chave do JSON para corresponder √† esperada pelo servidor
       });
 
       if (response.ok) {
         // Nome foi salvo com sucesso no banco de dados
         console.log("Nome salvo com sucesso");
+        console.log(name);
       } else {
-        // Lidar com erros, se necess·rio
+        // Lidar com erros, se necess√°rio
         console.error("Erro ao salvar o nome no banco de dados");
         console.log(name);
       }
     } catch (error) {
-      console.error("Erro na solicitaÁ„o:", error);
+      console.error("Erro na solicita√ß√£o:", error);
     }
   };
 
